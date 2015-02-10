@@ -1,0 +1,31 @@
+<form name="formEntidadBancaria" id="formEntidadBancaria">
+
+    <table class="table table-striped">
+        <tr><td>ID</td><td>Código Entidad</td><td>Nombre Entidad</td><td>CIF</td><td>Tipo de entidad</td><td>Opciones</td></tr>
+        <tr ng-repeat="lista in datos">
+            <td>{{lista.id}} <a href="#/entidadbancaria/list/sucursales/{{lista.id}}">Sucursales</a></td>
+            <td><input required type="number" ng-model="lista.codigoEntidad" style="width: 70%"></input></td>
+            <td><input required type="text" ng-model="lista.nombreEntidad" style="width: 70%"></input></td>
+            <td><input type="text" ng-model="lista.cif" style="width: 70%"></input></td>
+            <td><select required ng-model="lista.tipoEntidad" ng-options="tipo.idTipo as tipo.descripcion for tipo in tipos" >         
+                </select>
+            </td>
+            <td>                  
+                <a ng-click="onClickButtonDelete(lista.id)"  class="btn btn-danger" role="button">Borrar</a>
+                <a ng-click="onClickButtonUpdate(lista)" class="btn btn-info" role="button">Actualizar</a>                   
+            </td>
+        </tr>
+        <tr>
+            <td><input type="number" ng-model="listaInsertar.id" style="width: 70%"></input></td>
+            <td><input type="number" ng-model="listaInsertar.codigoEntidad" style="width: 70%"></input></td>
+            <td><input type="text" ng-model="listaInsertar.nombreEntidad" style="width: 70%"></input></td>
+            <td><input type="text" ng-model="listaInsertar.cif" style="width: 70%"></input></td>
+            <td><select ng-model="listaInsertar.tipoEntidad" ng-options="tipo.idTipo as tipo.descripcion for tipo in tipos" >         
+                    <option value="">--Elige opcion--</option>
+                </select></td>
+            <td>                  
+                <a ng-click="onClickButtonInsert(listaInsertar)"  class="btn btn-success" role="button">Insertar</a>                  
+            </td>
+        </tr>
+    </table>
+</form>

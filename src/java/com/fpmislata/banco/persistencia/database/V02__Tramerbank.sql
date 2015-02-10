@@ -1,0 +1,11 @@
+INSERT INTO `tramerbank`.`cuentabancaria` (`id`, `sucursalPertenece`, `numCuenta`, `digitosControl`, `saldoCuenta`) VALUES ('7', '1', '555877', '96', '877.6');
+INSERT INTO `tramerbank`.`cuentabancaria` (`id`, `sucursalPertenece`, `numCuenta`, `digitosControl`, `saldoCuenta`) VALUES ('8', '3', '885566', '75', '10');
+INSERT INTO `tramerbank`.`cuentabancaria` (`id`, `sucursalPertenece`, `numCuenta`, `digitosControl`, `saldoCuenta`) VALUES ('9', '4', '753698', '69', '0');
+INSERT INTO `tramerbank`.`usuarios` (`id`, `nombre`, `apellidos`, `email`, `direccion`, `telefono`, `contrasenya`, `rol`, `idCuentaBancaria`) VALUES ('4', 'b', 'b', 'b', 'b', '798', 'b', 'CLIENTE', '4');
+UPDATE `tramerbank`.`usuarios` SET `idCuentaBancaria`='1' WHERE `id`='1';
+UPDATE `tramerbank`.`usuarios` SET `idCuentaBancaria`='2' WHERE `id`='2';
+INSERT INTO `tramerbank`.`usuarios` (`id`, `nombre`, `apellidos`, `email`, `direccion`, `telefono`, `contrasenya`, `rol`, `idCuentaBancaria`) VALUES ('5', 'c', 'c', 'c', 'c', '78558', 'c', 'CLIENTE', '5');
+INSERT INTO `tramerbank`.`usuarios` (`id`, `nombre`, `apellidos`, `email`, `direccion`, `telefono`, `contrasenya`, `rol`, `idCuentaBancaria`) VALUES ('6', 'd', 'd', 'd', 'd', '55558', 'd', 'CLIENTE', '6');
+INSERT INTO `tramerbank`.`usuarios` (`id`, `nombre`, `apellidos`, `email`, `direccion`, `telefono`, `contrasenya`, `rol`, `idCuentaBancaria`) VALUES ('7', 'e', 'e', 'e', 'e', '77889', 'e', 'CLIENTE', '7');
+INSERT INTO `tramerbank`.`usuarios` (`id`, `nombre`, `apellidos`, `email`, `direccion`, `telefono`, `contrasenya`, `rol`, `idCuentaBancaria`) VALUES ('8 ', 'Ninjakey', 'S.L.', 'administrador@ninjakey.es', 'http://www.ninjakey.es', '987898799', 'ninjapurpura', 'CLIENTE', '8');
+INSERT INTO `tramerbank`.`usuarios` (`id`, `nombre`, `apellidos`, `email`, `direccion`, `telefono`, `contrasenya`, `rol`, `idCuentaBancaria`) VALUES ('9', 'Taronjagames', 'S.L.', 'administrador@taronjagames.es', 'http://www.taronjagames.es', '965896588', 'taronja', 'CLIENTE', '9');

@@ -1,0 +1,22 @@
+<table class="table table-striped" >
+    <tr><td>ID</td><td>Entidad Pertenece</td><td>Código Sucursal</td><td>Nombre Sucursal</td><td>Opciones</td></tr>
+    <tr ng-repeat="lista in datos">
+        <td>{{lista.id}} <a href="#/sucursalbancaria/list/cuentasbancarias/{{lista.id}}">Cuentas Bancarias</a></td>
+        <td><input required type="number" ng-model="lista.entidadPertenece"></input></td>
+        <td><input required type="text" ng-model="lista.codigoSucursal"></input></td>
+        <td><input required type="text" ng-model="lista.nombreSucursal"></input></td>
+        <td>                  
+            <a ng-click="onClickButtonDelete(lista.id)"  class="btn btn-danger" role="button">Borrar</a>
+            <a ng-click="onClickButtonUpdate(lista)" class="btn btn-info" role="button">Actualizar</a>                   
+        </td>
+    </tr>
+    <tr>
+        <td><input required type="number" ng-model="listaInsertar.id"></input></td>
+        <td><input required type="number" ng-model="listaInsertar.entidadPertenece"></input></td>
+        <td><input required type="text" ng-model="listaInsertar.codigoSucursal"></input></td>
+        <td><input required type="text" ng-model="listaInsertar.nombreSucursal"></input></td>
+        <td>                  
+            <a ng-click="onClickButtonInsert(listaInsertar)"  class="btn btn-success" role="button">Insertar</a>                  
+        </td>
+    </tr>
+</table>

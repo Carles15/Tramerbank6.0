@@ -1,0 +1,14 @@
+<div id="formulario">
+    <form>
+        <label>User</label><br>
+        <input ng-model="credential.email" type="text" name="email" value=""></input>
+        <br><br>
+        <label>Password</label><br>
+        <input ng-model="credential.contrasenya" type="password" name="contrasenya" value=""></input>
+    </form>
+    <a id="volver" href="../index.html">Volver</a>
+    <a id="entrar" ng-click="login(credential)" >Entrar</a>
+</div>
+<div id="info">
+    <p>{{mensajeMain}}</p>
+</div>

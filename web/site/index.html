@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="app">
+    <!--style="overflow: hidden"-->
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+        <title>Primer Banco Jedi Tramerbank</title>        
+
+        <link rel="shortcut icon" href="assets/images/gt_favicon.png">
+
+        <!-- Bootstrap itself -->
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+        <!-- Custom styles -->
+        <link rel="stylesheet" href="assets/css/magister.css">
+
+        <!-- Fonts -->
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Wire+One' rel='stylesheet' type='text/css'>
+
+        <link href="../lib/jquery/ui/css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+        <link href="../lib/jquery/ui/css/jquery-ui.structure.css" rel="stylesheet" type="text/css"/>
+        <link href="../lib/jquery/ui/css/jquery-ui.theme.css" rel="stylesheet" type="text/css"/>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="../lib/jquery/ui/jquery-ui.js" type="text/javascript"></script>
+
+        <script src="../lib/angular/js/angular.js" type="text/javascript"></script>
+        <script src="../lib/angular/js/angular-route.js" type="text/javascript"></script>
+        <script src="../lib/angular/js/datepicker/date.js" type="text/javascript"></script>
+
+
+        <!--basura-->
+        <script src="../empleado/app.js" type="text/javascript"></script>
+
+
+
+
+
+    </head>
+
+    <!-- use "theme-invert" class on bright backgrounds, also try "text-shadows" class -->
+    <body class="theme-invert" ng-controller="LogInController">
+
+        <nav class="mainmenu">
+            <div class="container">
+                <div class="dropdown">
+                    <button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <!-- <a data-toggle="dropdown" href="#">Dropdown trigger</a> -->
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <li><a id="head_menu" class="menu" href="#head">Home</a></li>
+                        <li><a id="login_menu" class="menu" href="#login">Log In</a></li>
+                        <li><a id="registrarse_menu" class="menu" href="#registrarse">Registrarse</a></li>
+                        <li><a id="terms_menu" class="menu" href="#terms">Términos de Uso</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Main (Home) section -->
+        <section class="section" id="head">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">	
+
+                        <!-- Site Title, your name, HELLO msg, etc. -->
+                        <div class="basetitulo" style="width:50%;float: right; margin-top: -10%;">
+                            <h1 class="title">Primer Banco Jedi</h1>
+                            <h2 class="subtitle" style="color: #FF66FF;"><strong>TRAMERBANK</strong></h2>
+
+                            <!-- Short introductory (optional) -->
+                            <h3 class="tagline">
+                                Me pregunto: <br/>
+                                ¿Que haría yo sin mi?
+                            </h3>
+
+                            <!-- Nice place to describe your site in a sentence or two -->
+                            <p><a id="a1" href="#login" class="btn btn-default btn-lg" style="margin-top: -15%;">Entrar</a></p>
+                        </div>
+
+
+                    </div> <!-- /col -->
+                </div> <!-- /row -->
+
+            </div>
+        </section>
+
+        <!-- Second (About) section -->
+        <section class="section" id="login">
+            <div class="container" style="width:50%;float: right; margin:130px 20px 0px 0px;">
+
+                <form id="loginform" class="form-signin">
+                    <h1 class="form-signin-heading text-muted">Log In</h1>
+                    <input id="user-name" ng-model="credential.email" name="email" type="text" class="form-control" placeholder="Email address" required="" autofocus="">
+                    <input id="user-pass" ng-model="credential.contrasenya" name="contrasenya" type="password" class="form-control" placeholder="Password" required="">
+
+                    <button id="buttonentrada" class="btn btn-lg btn-danger" type="submit" style="float: right; margin-top: 2%;" ng-click="sendData(credential)">
+                        Log In
+                    </button>
+                </form>
+
+            </div>
+        </section>
+
+
+        <section class="container" id="registrarse" style="width:50%;float: right;margin-top: 5.5%;">
+            <div class="container-page">				
+                <div class="col-md-6">
+                    <h3 class="dark-grey">Registro</h3>
+
+                    <div class="form-group col-lg-12">
+                        <label>Usuario</label>
+                        <input ng-model="datos.usuario" type="" name="" class="form-control" id="" value="">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label>Contraseña</label>
+                        <input ng-model="datos.password" type="password" name="" class="form-control" id="" value="">
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label>Dirección eMail</label>
+                        <input ng-model="datos.email" type="" name="" class="form-control" id="" value="">
+                    </div>
+                    <label>Fecha</label>
+                    <input  id="carles" ng-model="datos.fecha" name="fecha" ui-date>
+
+                    <div class="col-sm-6">
+                        <input type="checkbox" class="checkbox" /><a id="enlaceterminos" href="#terms">Acepto los términos y licencias de uso</a>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <input type="checkbox" class="checkbox" />Alistarme en el ejército rebelde
+                    </div>				
+                    <button type="submit" class="btn btn-danger" style="margin-top: 40px">Registrarme</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="terms">
+            <div class="container" style="width:50%;float: right; margin-right: 10px; background-color: whitesmoke">
+                <h3>Términos y Licencia de uso</h3>
+                <p>En primer lugar, <strong>agradecerle</strong> en nombre de la
+                    Alianza Rebelde su confianza en <h5>El primer banco Jedi: <strong style="color: #FF66FF;">TramerBank.</strong></h5></p>
+                <p>Al hacer uso de nuestro servicio, <strong>acepta</strong> los siguientes términos y condiciones:</p>
+                <ol>
+                    <li><p>Sus datos pueden ser usados por <strong>
+                                "El primer banco jedi: <span style="color: #FF66FF;">TramerBank</span>"</strong>
+                            con el objetivo de obtener mejores resultados en nuestro enfrentamiento contra la amenaza imperial.</p></li>
+                    <li><p>
+                            Sus datos pueden ser vendidos a terceros con la finalidad de obtener
+                            financiación y enfrentar de forma más efectiva al imperio.
+                        </p></li>
+                    <li><p>Frente a cualquier sospecha de que un usuario ("usted"),
+                            tiene relación de algún tipo con el imperio. Su cuenta
+                            puede quedar suspendida y su dinero anexado a las
+                            arcas de la Alianza Rebelde.</p></li>
+                    <li><p>El uso de esta plataforma implica una retención
+                            del 10% por cada 1.000€, con idea de sustentar las
+                            actividades de la Alianza Rebelde</p></li>
+                    <li><p>Ser poseedor de la Master Card: Jedi, supone un
+                            recargo del 75% de cualquier pago o ingreso realizado
+                            con esta targeta. Este recargo constará como donación
+                            hacia la Alianza Rebelde.</p></li>
+                </ol>
+            </div>
+            <a id="returnlink" class="btn btn-danger" style="float: right">Volver</a>
+        </section>
+
+        <!-- Load js libs only when the page is loaded. -->
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
+        <!-- Script para el login -->
+        <script src="assets/js/LogInController.js" type="text/javascript"></script>
+        <script src="../empleado/common/util/path.js.jsp"></script>
+        <script src="assets/js/magister.js" type="text/javascript"></script>
+    </body>
+</html>

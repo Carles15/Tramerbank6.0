@@ -1,0 +1,33 @@
+<table class="table table-striped" >
+    <tr><td>Id</td><td>Cuenta Bancaria</td><td>Tipo Movimiento</td><td>Importe</td><td>Fecha</td><td>Saldo Total</td><td>Concepto</td><td>Opciones</td></tr>
+    <tr ng-repeat="lista in datos">
+        <td>{{lista.id}}</td>
+        <td><input required type="number" ng-model="lista.cuentaPertenece" style="width: 30%"></input></td>
+        <td><select required ng-model="lista.tipoMovimiento" ng-options="tipoMovimiento.idTipo as tipoMovimiento.descripcion for tipoMovimiento in tipoMovimientos" >         
+            </select>
+        </td>
+        <td><input required type="number" ng-model="lista.importe" style="width: 60%"></input></td>
+        <td><input required type="text" ng-model="lista.fecha" style="width: 80%" ui-date></input></td>
+        <td><input required type="number" ng-model="lista.saldoTotal" style="width: 70%"></input></td>
+        <td><input required type="text" ng-model="lista.concepto" style="width: 100%"></input></td>
+        <td>                  
+            <a ng-click="onClickButtonDelete(lista.id)"  class="btn btn-danger" role="button">Borrar</a>
+            <a ng-click="onClickButtonUpdate(lista)" class="btn btn-info" role="button">Actualizar</a>                   
+        </td>
+    </tr>
+    <tr>
+        <td><input required type="number" ng-model="listaInsertar.id" style="width: 30%"></input></td>
+        <td><input required type="number" ng-model="listaInsertar.cuentaPertenece" style="width: 30%"></input></td>
+        <td><select required ng-model="listaInsertar.tipoMovimiento" ng-options="tipoMovimiento.idTipo as tipoMovimiento.descripcion for tipoMovimiento in tipoMovimientos" >         
+            <option value="">--Elige opcion--</option>
+            </select>            
+        </td>
+        <td><input required type="number" ng-model="listaInsertar.importe" style="width: 60%"></input></td>
+        <td><input required type="text" ng-model="listaInsertar.fecha" style="width: 80%" ui-date></input></td>
+        <td><input required type="number" ng-model="listaInsertar.saldoTotal" style="width: 70%"></input></td>
+        <td><input required type="text" ng-model="listaInsertar.concepto" style="width: 100%"></input></td>
+        <td>                  
+            <a ng-click="onClickButtonInsert(listaInsertar)"  class="btn btn-success" role="button">Insertar</a>                  
+        </td>
+    </tr>
+</table>

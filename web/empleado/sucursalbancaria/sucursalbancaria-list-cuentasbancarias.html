@@ -1,0 +1,39 @@
+<h3>Sucursal</h3>
+<table class="table table-striped" >
+    <tr><td>ID</td><td>Entidad Pertenece</td><td>Código Sucursal</td><td>Nombre Sucursal</td></tr>
+    <tr>
+        <td>{{datos.id}}</td>
+        <td><input required type="number" ng-model="datos.entidadPertenece"></input></td>
+        <td><input required type="number" ng-model="datos.codigoSucursal"></input></td>
+        <td><input required type="text" ng-model="datos.nombreSucursal"></input></td>
+</table>
+<br/>
+<br/>
+<h4>Cuentas Bancarias</h4>
+<br/>
+<br/>
+<table class="table table-striped" >
+    <tr><td>ID</td><td>Sucursal Pertenece</td><td>Número de Cuenta</td><td>Dígitos Control</td><td>Saldo de la Cuenta</td><td>Opciones</td></tr>
+    <tr ng-repeat="lista2 in cuentas">
+        <td>{{lista2.id}}</td>
+        <td><input required ng-model="lista2.sucursalPertenece" style="width: 70%"></input></td>
+        <td><input required type="number" ng-model="lista2.numCuenta" style="width: 70%"></input></td>
+        <td><input required type="number" ng-model="lista2.digitosControl" style="width: 70%"></input></td>
+        <td><input required type="number" ng-model="lista2.saldoCuenta" style="width: 70%"></input></td>
+        <td>                  
+            <a ng-click="onClickButtonDelete(lista2.id)"  class="btn btn-danger" role="button">Borrar</a>
+            <a ng-click="onClickButtonUpdate(lista2)" class="btn btn-info" role="button">Actualizar</a>                   
+        </td>
+    </tr>
+    <tr>
+        <td><input required type="number" ng-model="listaInsertar.id" style="width: 70%"></input></td>
+        <td><input required ng-model="listaInsertar.sucursalPertenece" style="width: 70%"></input></td>
+        <td><input required type="number" ng-model="listaInsertar.numCuenta" style="width: 70%"></input></td>
+        <td><input required type="number" ng-model="listaInsertar.digitosControl" style="width: 70%"></input></td>
+        <td><input required type="number" ng-model="listaInsertar.saldoCuenta" style="width: 70%"></input></td>
+        <td>                  
+            <a ng-click="onClickButtonInsert(listaInsertar)"  class="btn btn-success" role="button">Insertar</a>                  
+        </td>
+    </tr>
+    
+</table>
