@@ -6,7 +6,9 @@
 <hibernate-mapping>
 
     <class name="com.fpmislata.banco.dominio.CuentaBancaria" table="cuentabancaria">
-        <id column="id" name="id" type="integer"/>
+        <id column="id" name="id" type="integer">
+            <generator class="increment"/>
+        </id>
         <property name="sucursalPertenece"/>
         <property name="numCuenta"/>
         <property name="digitosControl"/>

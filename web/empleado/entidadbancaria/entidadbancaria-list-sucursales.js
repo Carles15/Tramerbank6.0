@@ -8,6 +8,15 @@ app.controller("EntidadBancariaListSucursalesController", function($scope, $http
     }).error(function(data, status, headers, config) {
         alert("Ha fallado la petición. Estado HTTP:" + status);
     });
+    
+    $http({
+        method: 'GET',
+        url: contextPath + '/api/EntidadBancaria'
+    }).success(function(data, status, headers, config) {
+        $scope.datos2 = data;
+    }).error(function(data, status, headers, config) {
+        alert("Ha fallado la petición. Estado HTTP:" + status);
+    });
 
     $scope.findAll = function() {
         $http({
@@ -42,7 +51,15 @@ app.controller("EntidadBancariaListSucursalesController", function($scope, $http
             alert("El registro a sido actualizado con exito");
             $scope.findAll();
         }).error(function(data, status, headers, config) {
-            alert("Ha fallado la petición. Estado HTTP:" + status);
+            if (status == 400) {
+                mensaje = "";
+                for (a in data) {
+                    mensaje += data[a].message + '\n';
+                }
+                alert(mensaje);
+            } else {
+                alert("Ha fallado la petición. Estado HTTP:" + status);
+            }
         });
     };
 
@@ -55,8 +72,15 @@ app.controller("EntidadBancariaListSucursalesController", function($scope, $http
             $scope.findAll();
             alert("El registro a sido insertad con exito");
         }).error(function(data, status, headers, config) {
-            alert("Ha fallado la petición. Estado HTTP:" + status);
+            if (status == 400) {
+                mensaje = "";
+                for (a in data) {
+                    mensaje += data[a].message + '\n';
+                }
+                alert(mensaje);
+            } else {
+                alert("Ha fallado la petición. Estado HTTP:" + status);
+            }
         });
     };
 });
-

@@ -2,6 +2,7 @@ package com.fpmislata.banco.presentacion.controller.dominio;
 
 import com.fpmislata.banco.common.json.JsonConverter;
 import com.fpmislata.banco.dominio.Usuario;
+import com.fpmislata.banco.persistencia.BussinessException;
 import com.fpmislata.banco.persistencia.UsuarioDAO;
 import java.io.IOException;
 import java.util.List;
@@ -60,40 +61,32 @@ public class UsuarioController {
     }
 
     @RequestMapping(value = "/Usuario", method = RequestMethod.POST)
-    public void insert(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada) {
+    public void insert(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada) throws IOException {
         httpServletResponse.setContentType("application/json");
         try {
             Usuario usuario = (Usuario) jsonConverter.fromJson(jsonEntrada, Usuario.class);
             usuarioDAO.insert(usuario);
             httpServletResponse.getWriter().println(jsonConverter.toJson(usuarioDAO.get(usuario.getId())));
             httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-        } catch (Exception ex) {
-            try {
-                ex.printStackTrace(httpServletResponse.getWriter());
-                httpServletResponse.setContentType("text/plain");
-                httpServletResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            } catch (IOException ex1) {
-                throw new RuntimeException(ex);
-            }
+        } catch (BussinessException bussinessException) {
+            httpServletResponse.setContentType("application/json");
+            httpServletResponse.getWriter().println(jsonConverter.toJson(bussinessException.getMessagesList()));
+            httpServletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
 
     @RequestMapping(value = "/Usuario", method = RequestMethod.PUT)
-    public void update(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada) {
+    public void update(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada) throws IOException {
         httpServletResponse.setContentType("application/json");
         try {
             Usuario usuario = (Usuario) jsonConverter.fromJson(jsonEntrada, Usuario.class);
             usuarioDAO.update(usuario);
             httpServletResponse.getWriter().println(jsonConverter.toJson(usuarioDAO.get(usuario.getId())));
             httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-        } catch (Exception ex) {
-            try {
-                ex.printStackTrace(httpServletResponse.getWriter());
-                httpServletResponse.setContentType("text/plain");
-                httpServletResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            } catch (IOException ex1) {
-                throw new RuntimeException(ex);
-            }
+        } catch (BussinessException bussinessException) {
+            httpServletResponse.setContentType("application/json");
+            httpServletResponse.getWriter().println(jsonConverter.toJson(bussinessException.getMessagesList()));
+            httpServletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
 

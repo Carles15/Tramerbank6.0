@@ -7,7 +7,9 @@
 <hibernate-mapping>
 
     <class name="com.fpmislata.banco.dominio.SucursalBancaria" table="sucursalbancaria">
-        <id column="id" name="id" type="integer"/>
+        <id column="id" name="id" type="integer">
+            <generator class="increment"/>
+        </id>
         <property name="entidadPertenece"/>
         <property name="codigoSucursal"/>
         <property name="nombreSucursal"/>

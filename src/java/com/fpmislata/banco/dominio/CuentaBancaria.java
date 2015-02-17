@@ -1,13 +1,23 @@
 package com.fpmislata.banco.dominio;
 
 import java.io.Serializable;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 
 
 public class CuentaBancaria implements Serializable{
+    @Digits(integer=11,fraction=0)
     private int id;
+    @Digits(integer=11,fraction=0)
+    @Min(1)
     private int sucursalPertenece;
+    @Digits(integer=11,fraction=0)
+    @Min(1)
     private int numCuenta;
+    @Digits(integer=11,fraction=0)
+    @Min(1)
     private int digitosControl;
+    @Digits(integer=11,fraction=10)
     private double saldoCuenta;
 
     public CuentaBancaria() {

@@ -1,6 +1,10 @@
 package com.fpmislata.banco.dominio;
 
 import java.io.Serializable;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import org.hibernate.mapping.Column;
 
 
@@ -9,9 +13,17 @@ import org.hibernate.mapping.Column;
 
 public class EntidadBancaria implements Serializable{
 
+    @Digits(integer=11,fraction=0)
+    @Min(1)
     private int id;
+    @Digits(integer=11,fraction=0)
+    @Min(1)
     private int codigoEntidad;
+    @Size(min=1, max=50)
+    @NotNull
     private String nombreEntidad;
+    @Size(min=1, max=50)
+    @NotNull
     private String cif;
     TipoEntidad tipoEntidad;
 

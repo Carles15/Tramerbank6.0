@@ -3,6 +3,7 @@ import com.fpmislata.banco.common.json.JsonConverter;
 import com.fpmislata.banco.dominio.CuentaBancaria;
 import com.fpmislata.banco.dominio.MovimientoBancario;
 import com.fpmislata.banco.dominio.TipoMovimiento;
+import com.fpmislata.banco.persistencia.BussinessException;
 import com.fpmislata.banco.persistencia.CuentaBancariaDAO;
 import com.fpmislata.banco.persistencia.MovimientoBancarioDAO;
 import java.io.IOException;
@@ -67,40 +68,32 @@ public class CuentaBancariaController {
     }
 
     @RequestMapping(value = "/CuentaBancaria", method = RequestMethod.POST)
-    public void insert(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada) {
+    public void insert(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada) throws IOException {
         httpServletResponse.setContentType("application/json");
         try {
             CuentaBancaria cuentaBancaria = (CuentaBancaria) jsonConverter.fromJson(jsonEntrada, CuentaBancaria.class);
             cuentaBancariaDAO.insert(cuentaBancaria);
             httpServletResponse.getWriter().println(jsonConverter.toJson(cuentaBancariaDAO.get(cuentaBancaria.getId())));
             httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-        } catch (Exception ex) {
-            try {
-                ex.printStackTrace(httpServletResponse.getWriter());
-                httpServletResponse.setContentType("text/plain");
-                httpServletResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            } catch (IOException ex1) {
-                throw new RuntimeException(ex);
-            }
+        } catch (BussinessException bussinessException) {
+            httpServletResponse.setContentType("application/json");
+            httpServletResponse.getWriter().println(jsonConverter.toJson(bussinessException.getMessagesList()));
+            httpServletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
 
     @RequestMapping(value = "/CuentaBancaria", method = RequestMethod.PUT)
-    public void update(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada) {
+    public void update(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada) throws IOException {
         httpServletResponse.setContentType("application/json");
         try {
             CuentaBancaria cuentaBancaria = (CuentaBancaria) jsonConverter.fromJson(jsonEntrada, CuentaBancaria.class);
             cuentaBancariaDAO.update(cuentaBancaria);
             httpServletResponse.getWriter().println(jsonConverter.toJson(cuentaBancariaDAO.get(cuentaBancaria.getId())));
             httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-        } catch (Exception ex) {
-            try {
-                ex.printStackTrace(httpServletResponse.getWriter());
-                httpServletResponse.setContentType("text/plain");
-                httpServletResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            } catch (IOException ex1) {
-                throw new RuntimeException(ex);
-            }
+        } catch (BussinessException bussinessException) {
+            httpServletResponse.setContentType("application/json");
+            httpServletResponse.getWriter().println(jsonConverter.toJson(bussinessException.getMessagesList()));
+            httpServletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
     }
 
@@ -144,24 +137,20 @@ public class CuentaBancariaController {
     }
     
     @RequestMapping(value ={"CuentaBancaria/create"}, method = RequestMethod.POST)
-    public void createAccount(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada){
+    public void createAccount(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada) throws IOException{
         httpServletResponse.setContentType("application/json");
         CuentaBancaria cuentaBancaria = (CuentaBancaria) jsonConverter.fromJson(jsonEntrada, CuentaBancaria.class);
-        MovimientoBancario movimientoBancario = new MovimientoBancario(cuentaBancaria.getId(),TipoMovimiento.HABER,0,new Date(),"nueva cuenta");
-        movimientoBancario.setSaldoTotal(cuentaBancaria.getSaldoCuenta());
-        cuentaBancariaDAO.insert(cuentaBancaria);
-        movimientoBancarioDAO.insert(movimientoBancario);
+        MovimientoBancario movimientoBancario = new MovimientoBancario(cuentaBancaria.getId(), TipoMovimiento.HABER, 0, new Date(), "nueva cuenta");
         try {
+            movimientoBancario.setSaldoTotal(cuentaBancaria.getSaldoCuenta());
+            cuentaBancariaDAO.insert(cuentaBancaria);
+            movimientoBancarioDAO.insert(movimientoBancario);
+
             httpServletResponse.getWriter().print(jsonConverter.toJson(cuentaBancaria));
             httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-        } catch (IOException ex) {
-            try {
-                ex.printStackTrace(httpServletResponse.getWriter());
-                httpServletResponse.setContentType("text/plain");
-                httpServletResponse.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            } catch (IOException ex1) {
-                throw new RuntimeException(ex);
-            }
+        } catch (BussinessException bussinessException) {
+            httpServletResponse.setContentType("application/json");
+            httpServletResponse.getWriter().println(jsonConverter.toJson(bussinessException.getMessagesList()));
         }
     }
     

@@ -1,8 +1,10 @@
 package com.fpmislata.banco.persistencia.impl.hibernate;
 
+import com.fpmislata.banco.persistencia.BussinessException;
 import com.fpmislata.banco.persistencia.GenericDAO;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
+import javax.validation.ConstraintViolationException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -25,18 +27,16 @@ public class GenericDAOImplHibernate<T> implements GenericDAO<T> {
     }
 
     @Override
-    public T insert(T t) {
+    public T insert(T t) throws BussinessException {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         try {
             session.beginTransaction();
             session.save(t);
             session.getTransaction().commit();
+            session.clear();
             return t;
-        } catch (Exception ex) {
-            if (session.getTransaction().isActive()) {
-                session.getTransaction().rollback();
-            }
-            throw new RuntimeException(ex);
+        } catch (ConstraintViolationException constraintViolationException){
+            throw new BussinessException(constraintViolationException);
         }
     }
 
@@ -57,18 +57,15 @@ public class GenericDAOImplHibernate<T> implements GenericDAO<T> {
     }
 
     @Override
-    public T update(T t) {
+    public T update(T t) throws BussinessException {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         try {
             session.beginTransaction();
             session.update(t);
             session.getTransaction().commit();
             return t;
-        } catch (Exception ex) {
-            if (session.getTransaction().isActive()) {
-                session.getTransaction().rollback();
-            }
-            throw new RuntimeException();
+        } catch (ConstraintViolationException constraintViolationException){
+            throw new BussinessException(constraintViolationException);
         }
     }
 

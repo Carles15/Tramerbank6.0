@@ -3,10 +3,10 @@
 <tr><td>ID</td><td>Código Entidad</td><td>Nombre Entidad</td><td>CIF</td><td>Tipo de entidad</td></tr>
     <tr >
         <td>{{datos.id}}</td>
-        <td><input required type="number" ng-model="datos.codigoEntidad" style="width: 70%"></input></td>
-        <td><input required type="text" ng-model="datos.nombreEntidad" style="width: 70%"></input></td>
-        <td><input required type="text" ng-model="datos.cif" style="width: 70%"></input></td>
-        <td><input required type="text" ng-model="datos.tipoEntidad" style="width: 70%"></input></td>
+        <td>{{datos.codigoEntidad}}</td>
+        <td>{{datos.nombreEntidad}}</td>
+        <td>{{datos.cif}}</td>
+        <td>{{datos.tipoEntidad}}</td>
     </tr>
 </table>
 <br/>
@@ -16,24 +16,37 @@
 <br/>
 <table class="table table-striped" >
     <tr><td>ID</td><td>Entidad Pertenece</td><td>Código Sucursal</td><td>Nombre Sucursal</td><td>Opciones</td></tr>
-    <tr ng-repeat="lista2 in sucursales">
+    <tr ng-repeat="lista2 in sucursales" ng-form="formEntidadBancaria">
         <td>{{lista2.id}}</td>
-        <td><input required type="number" ng-model="lista2.entidadPertenece"></input></td>
-        <td><input required type="text" ng-model="lista2.codigoSucursal"></input></td>
-        <td><input required type="text" ng-model="lista2.nombreSucursal"></input></td>
+
+        <td>
+            <select name="entidadPertenece" required type="number" min="1" ng-model="lista2.entidadPertenece" ng-class="{'field-error':formEntidadBancaria.entidadPertenece.$invalid}">
+                <option value=""> -- Elige opcion --
+                <option ng-repeat="entidades in datos2" ng-value="{{entidades.id}}" ng-selected="{{lista2.entidadPertenece == entidades.id}}">{{entidades.nombreEntidad}}
+            </select>
+        </td>
+        <td><input name="codigoSucursal" required type="text" ng-model="lista2.codigoSucursal" ng-class="{'field-error':formEntidadBancaria.codigoSucursal.$invalid}"></input></td>
+        <td><input name="nombreSucursal" required type="text" ng-model="lista2.nombreSucursal" ng-class="{'field-error':formEntidadBancaria.nombreSucursal.$invalid}"></input></td>
+
         <td>                  
             <a ng-click="onClickButtonDelete(lista2.id)"  class="btn btn-danger" role="button">Borrar</a>
-            <a ng-click="onClickButtonUpdate(lista2)" class="btn btn-info" role="button">Actualizar</a>                   
+            <a ng-disabled="formEntidadBancaria.$invalid" ng-click="onClickButtonUpdate(lista2)" class="btn btn-info" role="button">Actualizar</a>                   
         </td>
     </tr>
-    <tr>
-        <td><input required type="number" ng-model="listaInsertar.id"></input></td>
-        <td><input required type="number" ng-model="listaInsertar.entidadPertenece"></input></td>
-        <td><input required type="text" ng-model="listaInsertar.codigoSucursal"></input></td>
-        <td><input required type="text" ng-model="listaInsertar.nombreSucursal"></input></td>
-        <td>                  
-            <a ng-click="onClickButtonInsert(listaInsertar)"  class="btn btn-success" role="button">Insertar</a>                  
+    <tr ng-form="formEntidadBancaria">
+        <td></td>
+        <td>
+            <select name="entidadPertenece" required type="number" min="1" ng-model="listaInsertar.entidadPertenece" ng-class="{'field-error':formEntidadBancaria.entidadPertenece.$invalid}">
+                <option value=""> -- Elige opcion --
+                <option ng-repeat="entidades in datos2" ng-value="{{entidades.id}}">{{entidades.nombreEntidad}}
+            </select>
+        </td>
+        <td><input name="codigoSucursal" required type="text" ng-model="listaInsertar.codigoSucursal" ng-class="{'field-error':formEntidadBancaria.codigoSucursal.$invalid}"></input></td>
+        <td><input name="nombreSucursal" required type="text" ng-model="listaInsertar.nombreSucursal" ng-class="{'field-error':formEntidadBancaria.nombreSucursal.$invalid}"></input></td>
+
+
+        <td>
+            <a ng-disabled="formEntidadBancaria.$invalid" ng-click="onClickButtonInsert(listaInsertar)"  class="btn btn-success" role="button">Insertar</a>                  
         </td>
     </tr>
 </table>
-    

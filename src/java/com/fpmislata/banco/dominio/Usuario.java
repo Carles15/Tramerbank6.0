@@ -1,17 +1,27 @@
 package com.fpmislata.banco.dominio;
 
 import java.io.Serializable;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Size;
 
 
 public class Usuario implements Serializable{
+    @Digits(integer=11,fraction=0)
     private int id;
+    @Size(min=1, max=50)
     private String nombre;
+    @Size(min=1, max=50)
     private String apellidos;
+    @Size(min=1, max=100)
     private String email;
+    @Size(min=1, max=50)
     private String direccion;
+    @Size(min=1, max=50)
     private String telefono;
+    @Size(min=1, max=100)
     private String contrasenya;
     Rol rol;
+    @Digits(integer=11,fraction=0)
     private int idCuentaBancaria;
 
     public Usuario() {

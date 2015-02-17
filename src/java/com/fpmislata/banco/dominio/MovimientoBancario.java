@@ -2,15 +2,32 @@ package com.fpmislata.banco.dominio;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 
 public class MovimientoBancario implements Serializable{
+    @Digits(integer=11,fraction=0)
+    @Min(1)
     private int id;
+    @Digits(integer=11,fraction=0)
+    @Min(1)
     private int cuentaPertenece;
+    @NotNull
     private TipoMovimiento tipoMovimiento;
+    @Digits(integer=11,fraction=2)
+    @Min(0)
     private double importe;
+    @NotNull
+    @Past
     private Date fecha;
+    @Digits(integer=11,fraction=10)
+    @Min(0)
     private double saldoTotal;
+    @Size(min=1, max=1000)
     private String concepto;
 
     public MovimientoBancario() {
