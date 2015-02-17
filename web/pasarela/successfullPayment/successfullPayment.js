@@ -36,7 +36,7 @@ app.controller("SuccessfullPaymentController", ["$scope", "$http", "$rootScope",
         
         $scope.travelEncriptation = function(){
             var carrito = $rootScope.peticionPago.idCarrito;
-            $scope.encriptation = (carrito * 1.618);
+            $scope.encriptation = (carrito / 3365498);
         }
     }]);
 
