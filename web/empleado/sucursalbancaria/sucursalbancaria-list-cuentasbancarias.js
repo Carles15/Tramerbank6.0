@@ -3,6 +3,7 @@ app.controller("SucursalBancariaListCuentasBancariasController", function($scope
         method: 'GET',
         url: contextPath + '/api/SucursalBancaria/' + $routeParams.id + '/CuentasBancarias'
     }).success(function(data, status, headers, config) {
+        $scope.totalCuentas = data[1].length;
         $scope.datos = data[0];
         $scope.cuentas = data[1];
     }).error(function(data, status, headers, config) {
@@ -23,6 +24,7 @@ app.controller("SucursalBancariaListCuentasBancariasController", function($scope
             method: 'GET',
             url: contextPath + '/api/SucursalBancaria/' + $routeParams.id + '/CuentasBancarias'
         }).success(function(data, status, headers, config) {
+            $scope.totalCuentas = data[1].length;
             $scope.datos = data[0];
             $scope.cuentas = data[1];
         }).error(function(data, status, headers, config) {

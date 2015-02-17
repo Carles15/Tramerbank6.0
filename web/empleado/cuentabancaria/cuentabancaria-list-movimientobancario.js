@@ -13,7 +13,8 @@ app.controller("CuentaBancariaListMovimientoBancarioController", function($scope
         url: contextPath + '/api/CuentaBancaria/' + $routeParams.id + '/MovimientoBancario'
     }).success(function(data, status, headers, config) {
         $scope.datos = data[0];
-        for (var i = 0; i < data[1].length; i++) {
+        $scope.totalMovimientos = data[1].length;
+        for (i = 0; i < data[1].length; i++) {
             data[1][i].fecha = new Date(data[1][i].fecha);
         }
         $scope.movimientos = data[1];
@@ -36,6 +37,7 @@ app.controller("CuentaBancariaListMovimientoBancarioController", function($scope
             url: contextPath + '/api/CuentaBancaria/' + $routeParams.id + '/MovimientoBancario'
         }).success(function(data, status, headers, config) {
             $scope.datos = data[0];
+            $scope.totalMovimientos = data[i].length;
             for (var i = 0; i < data[1].length; i++) {
                 data[1][i].fecha = new Date(data[1][i].fecha);
             }

@@ -3,12 +3,13 @@ app.controller("EntidadBancariaListSucursalesController", function($scope, $http
         method: 'GET',
         url: contextPath + '/api/EntidadBancaria/' + $routeParams.id + '/SucursalesBancarias'
     }).success(function(data, status, headers, config) {
+        $scope.totalSucursales = data[1].length;
         $scope.datos = data[0];
         $scope.sucursales = data[1];
     }).error(function(data, status, headers, config) {
         alert("Ha fallado la petición. Estado HTTP:" + status);
     });
-    
+
     $http({
         method: 'GET',
         url: contextPath + '/api/EntidadBancaria'
@@ -23,6 +24,7 @@ app.controller("EntidadBancariaListSucursalesController", function($scope, $http
             method: 'GET',
             url: contextPath + '/api/EntidadBancaria/' + $routeParams.id + '/SucursalesBancarias'
         }).success(function(data, status, headers, config) {
+            $scope.totalSucursales = data[1].length;
             $scope.datos = data[0];
             $scope.sucursales = data[1];
         }).error(function(data, status, headers, config) {
