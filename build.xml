@@ -68,6 +68,7 @@
     nbproject/build-impl.xml file. 
 
     -->
+    <taskdef  resource="es/logongas/openshift/ant/antlib.xml" />
     
     <target name="-pre-dist" if ="openshift" >
         <delete file="web/META-INF/context.xml"></delete>
@@ -80,12 +81,30 @@
 
     <target name="distOpenshift" depends="enableOpenshift,default" >
         <delete dir="../pruebatramerbank"></delete>
-        <git command="clone" dir=".." options="ssh://54c23c2e4382ec4dc5000064@pruebatramerbank-dawcarles.rhcloud.com/~/git/pruebatramerbank.git/"></git>
+        
+        <gitcloneapplication    
+            userName="magiic15@gmail.com"
+            password="${password}"
+            domainName="dawcarles"
+            applicationName="pruebatramerbank" 
+            privateKeyFile="claves/id_rsa"
+            path="../pruebatramerbank"
+        />
+        
         <delete file="../pruebatramerbank/webapps/ROOT.war"></delete>
         <copy file="dist/ROOT.war" todir="../pruebatramerbank/webapps"></copy>
         <git dir="../pruebatramerbank" command="add *"></git>
         <git dir="../pruebatramerbank" command="commit" options=" -am 'version'"></git>
-        <git dir="../pruebatramerbank" command="push"></git>
+        
+        <gitpushapplication    
+            userName="magiic15@gmail.com"
+            password="${password}"
+            domainName="dawcarles"
+            applicationName="pruebatramerbank" 
+            privateKeyFile="claves/id_rsa"
+            path="../pruebatramerbank"
+        />
+        
     </target>
 
     <target name="enableOpenshift" >
@@ -97,19 +116,22 @@
     
     <!-- Para GIT -->
     
-    <macrodef name="git">
-    <attribute name="command" />
-    <attribute name="options" default="" />
-    <attribute name="dir" default="" />
-    <attribute name="failerror" default="false" />
-    <element name="args" optional="true" />
-    <sequential>
-        <echo message="git dir @{dir}" />
-        <echo message="git @{command}" />
-        <exec executable="git" dir="@{dir}" failonerror="@{failerror}">
-            <arg line="@{command} @{options}" />
-            <args />
-        </exec>
-    </sequential>
-</macrodef>
+    <!--
+          Esto sobra porque está en los nuevos jars que 
+          hemos incluido    
+        <macrodef name="git">
+        <attribute name="command" />
+        <attribute name="options" default="" />
+        <attribute name="dir" default="" />
+        <attribute name="failerror" default="false" />
+        <element name="args" optional="true" />
+        <sequential>
+            <echo message="git dir @{dir}" />
+            <echo message="git @{command}" />
+            <exec executable="git" dir="@{dir}" failonerror="@{failerror}">
+                <arg line="@{command} @{options}" />
+                <args />
+            </exec>
+        </sequential>
+    </macrodef>-->
 </project>
