@@ -1,7 +1,7 @@
 <table class="table table-striped" >
-    <tr><td>Id</td><td>Cuenta Bancaria</td><td>Tipo Movimiento</td><td>Importe</td><td>Fecha</td><td>Saldo Total</td><td>Concepto</td><td>Opciones</td></tr>
+    <tr><td></td><td>Cuenta Bancaria</td><td>Tipo Movimiento</td><td>Importe</td><td>Fecha</td><td>Saldo Total</td><td>Concepto</td><td>Opciones</td></tr>
     <tr ng-repeat="lista in datos" ng-form="formMovimientoBancario">
-        <td>{{lista.id}}</td>
+        <td></td>
         <td>
             <select name="cuentaPertenece" required type="number" ng-model="lista.cuentaPertenece" ng-class="{'field-error':formMovimientoBancario.cuentaPertenece.$invalid}">
                 <option value=""> -- Elige opcion --

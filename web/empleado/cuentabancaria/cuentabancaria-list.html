@@ -1,8 +1,8 @@
 <table class="table table-striped" >
-    <tr><td>ID</td><td>Sucursal Pertenece</td><td>Número de Cuenta</td><td>Dígitos Control</td><td>Saldo de la Cuenta</td><td>Opciones</td></tr>
+    <tr><td></td><td>Sucursal Pertenece</td><td>Número de Cuenta</td><td>Dígitos Control</td><td>Saldo de la Cuenta</td><td>Opciones</td></tr>
     <tr ng-repeat="lista in datos" ng-form="formCuentaBancaria">
         <td style="text-align: center">
-            {{lista.id}}<a href="#/cuentabancaria/list/movimientosbancarios/{{lista.id}}" style="text-decoration: none">Movimientos Bancarios</a>
+            <a href="#/cuentabancaria/list/movimientosbancarios/{{lista.id}}" class="btn btn-warning" style="width:100%;">Movimientos</a>
         </td>
         <td>
             <select name="sucursalPertenece" required type="number" ng-model="lista.sucursalPertenece" ng-class="{'field-error':formSucursalBancaria.sucursalPertenece.$invalid}">

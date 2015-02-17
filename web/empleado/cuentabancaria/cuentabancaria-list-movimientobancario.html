@@ -16,7 +16,7 @@
 <br/>
 <table class="table table-striped" >
     <tr><td>Id</td><td>Cuenta Bancaria</td><td>Tipo Movimiento</td><td>Importe</td><td>Fecha</td><td>Saldo Total</td><td>Concepto</td><td>Opciones</td></tr>
-    <tr ng-repeat="lista in movimientos">
+    <tr ng-repeat="lista in movimientos" ng-form="formCuentaBancaria">
         <td>{{lista.id}}</td>
         <td>
             <select name="cuentaPertenece" required type="number" min="1" ng-model="lista.cuentaPertenece" ng-class="{'field-error':formCuentaBancaria.cuentaPertenece.$invalid}">
@@ -24,15 +24,18 @@
                 <option ng-repeat="cuentas in datos2" ng-value="{{cuentas.id}}" ng-selected="{{lista.cuentaPertenece == cuentas.id}}">{{cuentas.numCuenta}}
             </select>
         </td>
-        <td><select name="tipoMovimiento" ng-model="lista.tipoMovimiento" ng-options="tipoMovimiento.idTipo as tipoMovimiento.descripcion for tipoMovimiento in tipoMovimientos" ng-class="{'field-error':formCuentaBancaria.tipoMovimiento.$invalid}">
-            </select></td>
+        <td>
+            <select name="tipoMovimiento" ng-model="lista.tipoMovimiento" ng-options="tipoMovimiento.idTipo as tipoMovimiento.descripcion for tipoMovimiento in tipoMovimientos" ng-class="{'field-error':formCuentaBancaria.tipoMovimiento.$invalid}">
+                <option value=""> -- Elige opcion --
+            </select>
+        </td>
         <td><input name="importe" required type="number" ng-model="lista.importe" style="width: 60%" ng-class="{'field-error':formCuentaBancaria.importe.$invalid}"></input></td>
         <td><input name="fecha" required type="text" ng-model="lista.fecha" style="width: 80%" ui-date ng-class="{'field-error':formCuentaBancaria.fecha.$invalid}"></input></td>
         <td>{{lista.saldoTotal}}</td>
         <td><input name="concepto" required type="text" ng-model="lista.concepto" style="width: 100%" ng-class="{'field-error':formCuentaBancaria.concepto.$invalid}"></input></td>
         <td>                  
-            <a ng-click="onClickButtonDelete(lista.id)"  class="btn btn-danger" role="button">Borrar</a>
-            <a ng-click="onClickButtonUpdate(lista)" class="btn btn-info" role="button">Actualizar</a>                   
+            <a ng-click="onClickButtonDelete(lista.id)"  class="btn btn-danger" style="width:100%" role="button">Borrar</a>
+            <a ng-disabled="formCuentaBancaria.$invalid" ng-click="onClickButtonUpdate(lista)" style="width:100%" class="btn btn-info" role="button">Actualizar</a>                   
         </td>
     </tr>
     <tr ng-form="formCuentaBancaria">
@@ -52,7 +55,7 @@
         <td>{{listaInsertar.saldoTotal}}</td>
         <td><input name="concepto" type="text" ng-model="listaInsertar.concepto" style="width: 100%" ng-class="{'field-error':formCuentaBancaria.concepto.$invalid}"></input></td>
         <td>                  
-            <a ng-click="onClickButtonInsert(listaInsertar)"  class="btn btn-success" role="button">Insertar</a>                  
+            <a ng-disabled="formCuentaBancaria.$invalid" ng-click="onClickButtonInsert(listaInsertar)" style="width:100%" class="btn btn-success" role="button">Insertar</a>                  
         </td>
     </tr>
 </table>

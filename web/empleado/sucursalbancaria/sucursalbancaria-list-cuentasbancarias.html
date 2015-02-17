@@ -26,8 +26,8 @@
         <td><input name="digitosControl" required type="number" ng-model="lista2.digitosControl" style="width: 70%" ng-class="{'field-error':formSucursalBancaria.digitosControl.$invalid}"></input></td>
         <td><input name="saldoCuenta" required type="number" ng-model="lista2.saldoCuenta" style="width: 70%" ng-class="{'field-error':formSucursalBancaria.saldoCuenta.$invalid}"></input></td>
         <td>                  
-            <a ng-click="onClickButtonDelete(lista2.id)"  class="btn btn-danger" role="button">Borrar</a>
-            <a ng-disabled="formSucursalBancaria.$invalid" ng-click="onClickButtonUpdate(lista2)" class="btn btn-info" role="button">Actualizar</a>                   
+            <a ng-click="onClickButtonDelete(lista2.id)" style="width:100%" class="btn btn-danger" role="button">Borrar</a>
+            <a ng-disabled="formSucursalBancaria.$invalid" ng-click="onClickButtonUpdate(lista2)" style="width:100%" class="btn btn-info" role="button">Actualizar</a>                   
         </td>
     </tr>
 
@@ -44,7 +44,7 @@
         <td><input name="saldoCuenta" required type="number" min="0" ng-model="listaInsertar.saldoCuenta" style="width: 70%" ng-class="{'field-error':formSucursalBancaria.saldoCuenta.$invalid}"></input></td>
 
         <td>                  
-            <a ng-disabled="formSucursalBancaria.$invalid" ng-click="onClickButtonInsert(listaInsertar)"  class="btn btn-success" role="button">Insertar</a>                  
+            <a ng-disabled="formSucursalBancaria.$invalid" ng-click="onClickButtonInsert(listaInsertar)" style="width:100%" class="btn btn-success" role="button">Insertar</a>                  
         </td>
     </tr>
     

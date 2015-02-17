@@ -66,12 +66,12 @@
     <body ng-controller="LogOutController" class="container-page" ng-style="myStyle">
         <aside style="height:auto;background-color: #222;color:white">
             <ul class="nav nav-tabs" style="height:auto">
-                <li role="presentation"><a href="#" ng-click="myStyle={'background-image':'url(main/css/images/home.jpg)'}">Home</a></li>
+                <li role="presentation"><a href="#" class="glyphicon glyphicon-home" ng-click="myStyle={'background-image':'url(main/css/images/home.jpg)'}"></a></li>
                 <li role="presentation"><a href="#/sucursalbancaria/list" ng-click="myStyle={background:'#eee'}">Sucursales Bancarias</a></li>
                 <li role="presentation"><a href="#/movimientobancario/list" ng-click="myStyle={background:'#eee'}">Movimientos Bancarios</a></li>
                 <li role="presentation"><a href="#/entidadbancaria/list" ng-click="myStyle={background:'#eee'}">Entidades Bancarias</a></li>
                 <li role="presentation"><a href="#/cuentabancaria/list" ng-click="myStyle={background:'#eee'}">Cuentas Bancarias</a></li>
-                <li role="presentation"><a type="button" class="btn btn-danger" ng-click="closeSession()">Log Out</a></li>
+                <li role="presentation"><a type="button" class="btn btn-danger btn-sm glyphicon glyphicon-log-out" ng-click="closeSession()"></a></li>
             </ul>
         </aside>
         <section>

@@ -29,8 +29,8 @@
         <td><input name="nombreSucursal" required type="text" ng-model="lista2.nombreSucursal" ng-class="{'field-error':formEntidadBancaria.nombreSucursal.$invalid}"></input></td>
 
         <td>                  
-            <a ng-click="onClickButtonDelete(lista2.id)"  class="btn btn-danger" role="button">Borrar</a>
-            <a ng-disabled="formEntidadBancaria.$invalid" ng-click="onClickButtonUpdate(lista2)" class="btn btn-info" role="button">Actualizar</a>                   
+            <a ng-click="onClickButtonDelete(lista2.id)" style="width:100%" class="btn btn-danger" role="button">Borrar</a>
+            <a ng-disabled="formEntidadBancaria.$invalid" ng-click="onClickButtonUpdate(lista2)" style="width:100%" class="btn btn-info" role="button">Actualizar</a>                   
         </td>
     </tr>
     <tr ng-form="formEntidadBancaria">
@@ -46,7 +46,7 @@
 
 
         <td>
-            <a ng-disabled="formEntidadBancaria.$invalid" ng-click="onClickButtonInsert(listaInsertar)"  class="btn btn-success" role="button">Insertar</a>                  
+            <a ng-disabled="formEntidadBancaria.$invalid" ng-click="onClickButtonInsert(listaInsertar)" style="width:100%" class="btn btn-success" role="button">Insertar</a>                  
         </td>
     </tr>
 </table>

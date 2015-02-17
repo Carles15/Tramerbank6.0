@@ -1,7 +1,7 @@
 <table class="table table-striped" >
-    <tr><td>ID</td><td>Entidad Pertenece</td><td>Código Sucursal</td><td>Nombre Sucursal</td><td>Opciones</td></tr>
+    <tr><td></td><td>Entidad Pertenece</td><td>Código Sucursal</td><td>Nombre Sucursal</td><td>Opciones</td></tr>
     <tr ng-repeat="lista in datos" ng-form="formSucursalBancaria">
-        <td>{{lista.id}} <a href="#/sucursalbancaria/list/cuentasbancarias/{{lista.id}}">Cuentas Bancarias</a></td>
+        <td><a href="#/sucursalbancaria/list/cuentasbancarias/{{lista.id}}" class="btn btn-warning" style="width:100%;">Cuentas</a></td>
         <td>
             <select name="entidadPertenece" required type="number" ng-model="lista.entidadPertenece" ng-class="{'field-error':formSucursalBancaria.entidadPertenece.$invalid}">
                 <option value=""> -- Elige opcion --
