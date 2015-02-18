@@ -3,6 +3,7 @@ package com.fpmislata.banco.servicios;
 import com.fpmislata.banco.dominio.CuentaBancaria;
 import com.fpmislata.banco.dominio.MovimientoBancario;
 import com.fpmislata.banco.dominio.Transaccion;
+import com.fpmislata.banco.persistencia.BussinessException;
 import com.fpmislata.banco.persistencia.CuentaBancariaDAO;
 import com.fpmislata.banco.persistencia.MovimientoBancarioDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class ServicioDeTransaccion {
     }
     
        
-    public boolean generarTransaccion(Transaccion transaccion){
+    public boolean generarTransaccion(Transaccion transaccion) throws BussinessException{
         int codigoCliente = transaccion.getCodigoCuentaClienteOrigen();
         CuentaBancaria cuentaBancariaDebe = cuentaBancariaDAO.getCuentaPorNumero(codigoCliente);
         MovimientoBancario movimientoBancarioDebe = transaccion.getMovimientoBancarioDebe(cuentaBancariaDebe.getId());

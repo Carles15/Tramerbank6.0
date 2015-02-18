@@ -3,6 +3,7 @@ package com.fpmislata.banco.persistencia.impl.hibernate;
 import com.fpmislata.banco.dominio.CuentaBancaria;
 import com.fpmislata.banco.dominio.MovimientoBancario;
 import com.fpmislata.banco.dominio.TipoMovimiento;
+import com.fpmislata.banco.persistencia.BussinessException;
 import com.fpmislata.banco.persistencia.CuentaBancariaDAO;
 import com.fpmislata.banco.persistencia.MovimientoBancarioDAO;
 import org.hibernate.Session;
@@ -14,10 +15,11 @@ public class MovimientoBancarioDAOImplHibernate extends GenericDAOImplHibernate<
     CuentaBancariaDAO cuentaBancariaDAO;
 
     @Override
-    public MovimientoBancario insert(MovimientoBancario movimientoBancario) {
+    public MovimientoBancario insert(MovimientoBancario movimientoBancario) throws BussinessException {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 
         CuentaBancaria cuentaBancaria = cuentaBancariaDAO.get(movimientoBancario.getCuentaPertenece());
+        
         if (movimientoBancario.getTipoMovimiento() == TipoMovimiento.DEBE) {
             cuentaBancaria.setSaldoCuenta(cuentaBancaria.getSaldoCuenta() - movimientoBancario.getImporte());
             movimientoBancario.setSaldoTotal(cuentaBancaria.getSaldoCuenta());
