@@ -1,0 +1,76 @@
+body {
+  background-size: cover; }
+  body header {
+    width: 90%;
+    margin-left: 5%; }
+    body header h1 {
+      font-family: 'Wire One', Helvetica, Arial, sans-serif;
+      color: #222;
+      font-size: 7em;
+      font-weight: normal;
+      width: 40%;
+      text-align: center;
+      margin: 30px 0 0 0; }
+    body header h2 {
+      font-family: 'Wire One';
+      color: #FF66FF;
+      font-size: 5.5em;
+      margin: 0 0 0 55px; }
+  body div#formulario form {
+    margin-left: 40%;
+    margin-bottom: 2%; }
+    body div#formulario form input {
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      border-radius: 5px;
+      border: 1px solid #3399FF;
+      padding: 5px 7px 5px 7px; }
+      body div#formulario form input:hover {
+        border: 1.5px solid #FF66FF;
+        -webkit-box-shadow: inset 0px -46px 38px -45px #ffd4f6;
+        -moz-box-shadow: inset 0px -46px 38px -45px #ffd4f6;
+        box-shadow: inset 0px -46px 38px -45px #ffd4f6; }
+  body div#formulario a {
+    border-top: 1px solid #828282;
+    background: #494b4d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#aab1b5), to(#494b4d));
+    background: -webkit-linear-gradient(top, #aab1b5, #494b4d);
+    background: -moz-linear-gradient(top, #aab1b5, #494b4d);
+    background: -ms-linear-gradient(top, #aab1b5, #494b4d);
+    background: -o-linear-gradient(top, #aab1b5, #494b4d);
+    padding: 5px 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: black 0 1px 0;
+    -moz-box-shadow: black 0 1px 0;
+    box-shadow: black 0 1px 0;
+    text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
+    color: white;
+    font-size: 14px;
+    font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+    text-decoration: none;
+    vertical-align: middle; }
+    body div#formulario a:hover {
+      border-top-color: #e3e3e3;
+      background: #e3e3e3;
+      color: #ccc; }
+    body div#formulario a:active {
+      border-top-color: #404040;
+      background: #404040; }
+    body div#formulario a#volver {
+      margin-left: 41%; }
+    body div#formulario a#entrar {
+      margin-left: 2%; }
+  body div#info {
+    width: 50%;
+    border-radius: 19px 19px 19px 19px;
+    -moz-border-radius: 19px 19px 19px 19px;
+    -webkit-border-radius: 19px 19px 19px 19px;
+    border: 4px solid black;
+    background-color: rgba(181, 181, 181, 0.5);
+    margin: 15% 0 0 5%; }
+    body div#info p {
+      padding: 5px 5px 5px 6px; }
+
+/*# sourceMappingURL=pasarelaStyle.css.map */

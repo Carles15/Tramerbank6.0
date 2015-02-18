@@ -1,0 +1,11 @@
+.field-error{
+    border:solid 1px red;
+}
+
+body aside ul li a#logout:hover{
+    color: #333;
+}
+
+body aside ul li a#logout span{
+    display: none;
+}

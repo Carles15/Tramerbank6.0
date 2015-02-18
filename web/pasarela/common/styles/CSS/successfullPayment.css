@@ -1,0 +1,51 @@
+div#globalSuccessfullPayment div.box {
+  width: 40%;
+  height: 150px;
+  background: #FFF;
+  margin-left: 32.6%; }
+  div#globalSuccessfullPayment div.box h3 {
+    text-align: center;
+    position: relative;
+    top: 35px;
+    font-family: "Indie Flower"; }
+div#globalSuccessfullPayment div.effect5 {
+  position: relative;
+  margin-top: 7%;
+  margin-bottom: 10%; }
+  div#globalSuccessfullPayment div.effect5:after {
+    -webkit-transform: rotate(8deg);
+    -moz-transform: rotate(8deg);
+    -o-transform: rotate(8deg);
+    -ms-transform: rotate(8deg);
+    transform: rotate(8deg);
+    right: 10px;
+    left: auto; }
+  div#globalSuccessfullPayment div.effect5:after, div#globalSuccessfullPayment div.effect5:before {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 25px;
+    left: 10px;
+    width: 50%;
+    top: 80%;
+    max-width: 300px;
+    background: #777;
+    -webkit-box-shadow: 0 35px 20px #777;
+    -moz-box-shadow: 0 35px 20px #777;
+    box-shadow: 0 35px 20px #777;
+    -webkit-transform: rotate(-8deg);
+    -moz-transform: rotate(-8deg);
+    -o-transform: rotate(-8deg);
+    -ms-transform: rotate(-8deg);
+    transform: rotate(-8deg); }
+div#globalSuccessfullPayment div#eslogan {
+  padding-right: -5%;
+  margin-top: 25%;
+  margin-left: 35%;
+  width: 400px;
+  text-align: center; }
+
+.btn {
+  margin: 5% auto auto 25%; }
+
+/*# sourceMappingURL=successfullPayment.css.map */

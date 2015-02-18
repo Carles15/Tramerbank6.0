@@ -1,0 +1,35 @@
+<table class="table table-striped" >
+    <tr><td></td><td>Entidad Pertenece</td><td>Código Sucursal</td><td>Nombre Sucursal</td><td>Opciones</td></tr>
+    <tr ng-repeat="lista in datos" ng-form="formSucursalBancaria">
+        <td><a href="#/sucursalbancaria/list/cuentasbancarias/{{lista.id}}" class="btn btn-warning" style="width:100%;">Cuentas</a></td>
+        <td>
+            <select name="entidadPertenece" required type="number" ng-model="lista.entidadPertenece" ng-class="{'field-error':formSucursalBancaria.entidadPertenece.$invalid}">
+                <option value=""> -- Elige opcion --
+                <option ng-repeat="entidades in datos2" ng-value="{{entidades.id}}" ng-selected="{{lista.entidadPertenece == entidades.id}}">{{entidades.nombreEntidad}}
+            </select>
+        </td>
+        <td><input name="codigoSucursal" required type="text" ng-model="lista.codigoSucursal" ng-class="{'field-error':formSucursalBancaria.codigoSucursal.$invalid}"></input></td>
+        <td><input name="nombreSucursal" required type="text" ng-model="lista.nombreSucursal" ng-class="{'field-error':formSucursalBancaria.nombreSucursal.$invalid}"></input></td>
+        <td>                  
+            <a ng-click="onClickButtonDelete(lista.id)" style="width:100%" class="btn btn-danger" role="button">Borrar</a>
+            <a ng-disabled="formSucursalBancaria.$invalid" ng-click="onClickButtonUpdate(lista)" style="width:100%" class="btn btn-info" role="button">Actualizar</a>                   
+        </td>
+    </tr>
+    
+    <tr ng-form="formSucursalBancaria">
+        <td></td>
+        <td>
+            <select name="entidadPertenece" required type="number" ng-model="listaInsertar.entidadPertenece" ng-class="{'field-error':formSucursalBancaria.entidadPertenece.$invalid}"> 
+                <option value=""> -- Elige opcion --
+                <option ng-repeat="entidades in datos2" ng-value="{{entidades.id}}">{{entidades.nombreEntidad}}
+            </select>
+        </td>
+        <td><input name="codigoSucursal" required type="text" ng-model="listaInsertar.codigoSucursal" ng-class="{'field-error':formSucursalBancaria.codigoSucursal.$invalid}"></input></td>
+        <td><input name="nombreSucursal" required type="text" ng-model="listaInsertar.nombreSucursal" ng-class="{'field-error':formSucursalBancaria.nombreSucursal.$invalid}"></input></td>
+
+    
+        <td>                  
+            <a ng-disabled="formSucursalBancaria.$invalid" ng-click="onClickButtonInsert(listaInsertar)" style="width:100%" class="btn btn-success" role="button">Insertar</a>                  
+        </td>
+    </tr>
+</table>

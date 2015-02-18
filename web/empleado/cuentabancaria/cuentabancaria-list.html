@@ -1,0 +1,38 @@
+<table class="table table-striped" >
+    <tr><td></td><td>Sucursal Pertenece</td><td>Número de Cuenta</td><td>Dígitos Control</td><td>Saldo de la Cuenta</td><td>Opciones</td></tr>
+    <tr ng-repeat="lista in datos" ng-form="formCuentaBancaria">
+        <td style="text-align: center">
+            <a href="#/cuentabancaria/list/movimientosbancarios/{{lista.id}}" class="btn btn-warning" style="width:100%;">Movimientos</a>
+        </td>
+        <td>
+            <select name="sucursalPertenece" required type="number" ng-model="lista.sucursalPertenece" ng-class="{'field-error':formSucursalBancaria.sucursalPertenece.$invalid}">
+                <option value=""> -- Elige opcion --
+                <option ng-repeat="sucursales in datos2" ng-value="{{sucursales.id}}" ng-selected="{{lista.sucursalPertenece == sucursales.id}}">{{sucursales.nombreSucursal}}
+            </select>
+        </td>
+        <td><input name="numeroCuenta" required type="number" min="1" ng-model="lista.numCuenta" style="width: 70%" ng-class="{'field-error':formCuentaBancaria.numeroCuenta.$invalid}"></input></td>
+        <td><input name="digitosControl" required type="number" min="1" ng-model="lista.digitosControl" style="width: 70%" ng-class="{'field-error':formCuentaBancaria.digitosControl.$invalid}"></input></td>
+        <td><input name="saldoCuenta" required type="number" min="0" ng-model="lista.saldoCuenta" style="width: 70%" ng-class="{'field-error':formCuentaBancaria.saldoCuenta.$invalid}"></input></td>
+        <td>                  
+            <a ng-click="onClickButtonDelete(lista.id)" style="width:100%" class="btn btn-danger" role="button">Borrar</a>
+            <a ng-disabled="formCuentaBancaria.$invalid" ng-click="onClickButtonUpdate(lista)" style="width:100%" class="btn btn-info" role="button">Actualizar</a>                   
+        </td>
+    </tr>
+    <tr ng-form="formCuentaBancaria">
+        <td></td>
+        <td>
+            <select name="sucursalPertenece" required type="number" ng-model="listaInsertar.sucursalPertenece" ng-class="{'field-error':formSucursalBancaria.sucursalPertenece.$invalid}">
+                <option value=""> -- Elige opcion --
+                <option ng-repeat="sucursales in datos2" ng-value="{{sucursales.id}}">{{sucursales.nombreSucursal}}
+            </select>
+        </td>
+        
+        <td><input name="numeroCuenta" required type="number" min="1" ng-model="listaInsertar.numCuenta" style="width: 70%" ng-class="{'field-error':formCuentaBancaria.numeroCuenta.$invalid}"></td>
+        <td><input name="digitosControl" required type="number" min="1" ng-model="listaInsertar.digitosControl" style="width: 70%" ng-class="{'field-error':formCuentaBancaria.digitosControl.$invalid}"></td>
+        <td><input name="saldoCuenta" required type="number" min="0" ng-model="listaInsertar.saldoCuenta" style="width: 70%" ng-class="{'field-error':formCuentaBancaria.saldoCuenta.$invalid}"></td>
+        <td>                  
+            <a ng-disabled="formCuentaBancaria.$invalid" ng-click="onClickButtonInsert(listaInsertar)"  style="width:100%" class="btn btn-success" role="button">Insertar</a>                  
+        </td>
+    </tr>
+    
+</table>

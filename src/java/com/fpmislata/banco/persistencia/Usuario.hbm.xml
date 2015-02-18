@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.fpmislata.banco.dominio.Usuario" table="usuarios">
+        <id column="id" name="id" type="integer"/>
+        <property name="nombre"/>
+        <property name="apellidos"/> 
+        <property name="email"/> 
+        <property name="direccion"/> 
+        <property name="telefono"/> 
+        <property name="contrasenya"/> 
+        <property name="rol">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.fpmislata.banco.dominio.Rol</param>
+                <param name="type">12</param>
+            </type>
+        </property> 
+        <property name="idCuentaBancaria"/>         
+    </class>
+
+</hibernate-mapping>

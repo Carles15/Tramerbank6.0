@@ -1,0 +1,41 @@
+div#datosPedidoUsuario {
+  margin-left: 7%;
+  width: 30%;
+  border-radius: 19px 19px 19px 19px;
+  -moz-border-radius: 19px 19px 19px 19px;
+  -webkit-border-radius: 19px 19px 19px 19px;
+  border: 4px solid black;
+  background-color: rgba(181, 181, 181, 0.5); }
+  div#datosPedidoUsuario h3 {
+    font-family: 'Wire One', Helvetica, Arial, sans-serif;
+    color: #222;
+    font-size: 3em;
+    font-weight: normal;
+    text-align: center;
+    margin: 10px 0 10px 0; }
+  div#datosPedidoUsuario p.TituloPedido {
+    font-family: 'Indie Flower', Helvetica, Arial, sans-serif;
+    font-size: 2.3em;
+    margin-left: 3%; }
+  div#datosPedidoUsuario p.DatosPedidoConfirmacion {
+    font-size: 1.3em;
+    margin-left: 4%; }
+
+div#buyEmphasisCover {
+  float: right;
+  margin: -5% 35% 0 auto;
+  width: 450px;
+  height: 300px; }
+  div#buyEmphasisCover div#buyEmphasisButtonCore {
+    margin: 25.5% auto auto 20%; }
+    div#buyEmphasisCover div#buyEmphasisButtonCore a {
+      padding: 25px 75px; }
+
+div#Imagenes {
+  margin: 2% 0 0 6.5%;
+  width: 450px;
+  height: 300px;
+  background-image: url("../../../images/correcto.jpg");
+  background-size: cover; }
+
+/*# sourceMappingURL=paymentConfirmationStyle.css.map */

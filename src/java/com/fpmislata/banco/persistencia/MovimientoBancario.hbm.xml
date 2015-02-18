@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.fpmislata.banco.dominio.MovimientoBancario" table="movimientobancario">
+        <id column="Id" name="id" type="integer">
+            <generator class="increment"/>
+        </id>
+        <property name="cuentaPertenece"/>
+        <property name="tipoMovimiento">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.fpmislata.banco.dominio.TipoMovimiento</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+        <property name="importe"/>
+        <property name="fecha"/>
+        <property name="saldoTotal"/>
+        <property name="concepto"/>
+    </class>
+
+</hibernate-mapping>
+
