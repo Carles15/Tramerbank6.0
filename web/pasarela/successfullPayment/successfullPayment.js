@@ -33,5 +33,11 @@ app.controller("SuccessfullPaymentController", ["$scope", "$http", "$rootScope",
 
             doc.save('datauri');
         };
+        
+        $scope.travelEncriptation = function(){
+            var carrito = $rootScope.peticionPago.idCarrito;
+            $scope.encriptation = carrito;
+            //(carrito / 3365498);
+        }
     }]);
 
