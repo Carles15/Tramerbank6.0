@@ -2,6 +2,7 @@ package com.fpmislata.banco.presentacion.controller.dominio;
 
 import com.fpmislata.banco.common.json.JsonConverter;
 import com.fpmislata.banco.dominio.Transaccion;
+import com.fpmislata.banco.persistencia.BussinessException;
 import com.fpmislata.banco.persistencia.CuentaBancariaDAO;
 import com.fpmislata.banco.persistencia.MovimientoBancarioDAO;
 import com.fpmislata.banco.servicios.ServicioDeTransaccion;
@@ -28,7 +29,7 @@ public class TransaccionController {
     JsonConverter jsonConverter;
 
     @RequestMapping(value = "/Transaccion", method = RequestMethod.POST)
-    public void insertTransaccion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada) {
+    public void insertTransaccion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, @RequestBody String jsonEntrada) throws BussinessException {
         httpServletResponse.setContentType("application/json");
         try {
             Transaccion transaccion = (Transaccion) jsonConverter.fromJson(jsonEntrada, Transaccion.class);
