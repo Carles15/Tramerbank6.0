@@ -16,7 +16,7 @@
         <td><input name="importe" required type="number" min="0" ng-model="lista.importe" style="width: 60%" ng-class="{'field-error':formMovimientoBancario.importe.$invalid}"></input></td>
         <td><input name="fecha" required type="text" ng-model="lista.fecha" style="width: 80%" ui-date ng-class="{'field-error':formMovimientoBancario.fecha.$invalid}"></input></td>
         <td>{{lista.saldoTotal}}</td>
-        <td><input name="concepto" required type="text" ng-model="lista.concepto" style="width: 100%" ng-class="{'field-error':formMovimientoBancario.concepto.$invalid}"></input></td>
+        <td><input name="concepto" type="text" ng-model="lista.concepto" style="width: 100%" ng-class="{'field-error':formMovimientoBancario.concepto.$invalid}"></input></td>
         <td>                  
             <a ng-click="onClickButtonDelete(lista.id)" style="width:100%" class="btn btn-danger" role="button">Borrar</a>
             <a ng-disabled="formMovimientoBancario.$invalid" ng-click="onClickButtonUpdate(lista)" style="width:100%" class="btn btn-info" role="button">Actualizar</a>                   
